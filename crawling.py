@@ -60,7 +60,7 @@ def writeFile(song_url):
         print(lyrics[:min(25,len(lyrics))] + '...')
         
 artists = [ 
-            #'https://mojim.com/twh109122.htm',
+            'https://mojim.com/twh109122.htm',
             'https://mojim.com/twh101283.htm',
             'https://mojim.com/twh107946.htm',
             'https://mojim.com/twh102164.htm',
