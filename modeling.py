@@ -24,6 +24,8 @@ def main():
         before = f.read()
     with open(file_after, 'r') as f:
         after = f.read()
+    with open('data/fake_token.txt', 'r') as f:
+        faketoken = f.read()
     word = input('輸入要比較的字：')
     word_bl = word + ' '
     word_nl = word + '\n'
@@ -36,9 +38,9 @@ def main():
         before = before.replace(word_nl, 'b' + word_nl)
         after = after.replace(word_bl, 'a' + word_bl)
         after = after.replace(word_nl, 'a' + word_nl)
-        with open('data/segments/4 In Love_vs_楊丞琳.txt', 'w') as f:
-            f.write(before + after)
-        sentences = word2vec.LineSentence("data/segments/4 In Love_vs_楊丞琳.txt")
+        with open('data/segments/comparison.txt', 'w') as f:
+            f.write(before.replace('\n', '') + faketoken.replace('\n', '') + after.replace('\n', ''))
+        sentences = word2vec.LineSentence("data/segments/comparison.txt")
         model = word2vec.Word2Vec(sentences, window=5, min_count=5, size=300, sg=0, workers=32, hs=1, iter=5)
         model.save("word2vec.model")
         #model1 = word2vec.Word2Vec.load("word2vec.model")
